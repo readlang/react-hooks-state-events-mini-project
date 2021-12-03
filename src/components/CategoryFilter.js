@@ -1,28 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 
-function CategoryFilter({categories, catFilter, setCategoryFilter} ) {
-  function handleFilterClick(event) {
-    console.log("1", event.target.textContent)
-    console.log("2", event.target)
-    setCategoryFilter(event.target.textContent)
-    
-    //event.target.className = "selected"
-
-    /// Stuck here with an error
-  }
-  console.log("3", catFilter)
+function CategoryFilter({categories, catFilter, setCatFilter} ) {
 
   function mapper(x) {
-    let classVari = ""
-    if (x === catFilter) {
-      classVari = "selected"
-      console.log("selected")
-    } 
-
-    console.log("4", x)
-
-    return( <button key={x} onClick={handleFilterClick} className={classVari} > {x} </button> )
+    return( <button 
+      key={x} 
+      onClick={ ()=> setCatFilter(x) } 
+      className={x === catFilter ? "selected" : "" } 
+      > {x} </button> 
+    )
   }
+
+  //console.log("Selected Category Filter:", catFilter)
 
   return (
     <div className="categories">

@@ -5,7 +5,7 @@ function Task({ text, category, handleDeleteClick }) {
     <div className="task">
       <div className="label">{category}</div>
       <div className="text">{text}</div>
-      <button className="delete" onClick={handleDeleteClick} >X</button>
+      <button className="delete" onClick={handleDeleteClick} >Delete</button>
     </div>
   );
 }

@@ -1,18 +1,28 @@
-import React, {useState} from "react";
+import React from "react";
 import Task from "./Task"
 
+function TaskList({ tasks, setTasks, catFilter }) {
+  let filteredTaskList 
+  
+  if (catFilter === "All") {
+    filteredTaskList = tasks;
+  } else {
+    filteredTaskList = tasks.filter( x => (x.category === catFilter ) )
+  }
 
-
-function TaskList({ tasks }) {
-  const [taskArray, setTaskArray] = useState(tasks)
-
+  
+  //console.log(filteredTaskList)
 
   return (
     <div className="tasks">
-      { taskArray.map((x) => <Task key={x.text} text={x.text} category={x.category} 
-        handleDeleteClick={(e)=> console.log(e) /* setTaskArray( taskArray.filter(x=>(x.text !== e.)))*/ }
-        //stuck here with how to grab key or text out of event "e.target"
-      />) }
+      { filteredTaskList.map((item) => 
+        <Task 
+          key={item.text} 
+          text={item.text} 
+          category={item.category} 
+          handleDeleteClick={()=> setTasks( tasks.filter( x => (x.text !== item.text))) }
+        /> ) 
+      }
     </div>
   );
 }
