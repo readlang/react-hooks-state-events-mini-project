@@ -10,12 +10,12 @@ function NewTaskForm( {categories, onTaskFormSubmit } ) {
 
       <label>
         Details
-        <input type="text" name="text" onChange={(e)=> setInputs( {...inputs, ["text"]: e.target.value } ) } />
+        <input type="text" name="text" onChange={(e)=> setInputs( {...inputs, text: e.target.value } ) } />
       </label>
 
       <label>
         Category
-        <select name="category" value={inputs.category} onChange={(e)=> setInputs( {...inputs, ["category"]: e.target.value} )} >
+        <select name="category" value={inputs.category} onChange={(e)=> setInputs( {...inputs, category: e.target.value} )} >
           { ( categories.filter(x=> (x !== "All")) ).map(x=> (  <option key={x} value= {x}> {x} </option> ) ) }
           
         </select>
